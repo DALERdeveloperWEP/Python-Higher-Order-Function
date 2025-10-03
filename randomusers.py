@@ -594,8 +594,12 @@ def get_users_by_country(data: dict, country: str) -> list[dict]:
     Returns:
         list[dict]: List of dictionaries containing full name and email of matching users.
     """
-    pass
+    return list(filter(
+        lambda user: f"{user['name']['first']} {user['name']['last']}",
+        data['results']
+    ))
 
+print(get_users_by_country(randomuser_data, 'awda'))
 
 def count_users_by_gender(data: dict) -> dict:
     """
